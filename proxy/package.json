@@ -1,0 +1,23 @@
+{
+  "name": "proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thefabfour/proxy-kyle-cordell.git"
+  },
+  "author": "Kyle Cordell",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thefabfour/proxy-kyle-cordell/issues"
+  },
+  "homepage": "https://github.com/thefabfour/proxy-kyle-cordell#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1"
+  }
+}
