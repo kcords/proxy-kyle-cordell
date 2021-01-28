@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
+const axios = require('axios');
 
 const app = express();
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.resolve(__dirname, '..', 'public');
 
 app.use(express.json());
@@ -15,21 +16,31 @@ app.use('/', (req, res, next) => {
 
 app.use(express.static(PUBLIC_DIR));
 
-app.get('/api/bookings/:id', (req, res) => {
+app.get('/api/rooms/:id/reviews', (req, res) => {
   const { id } = req.params;
-  axios.get(`http://localhost:3001/${id}/bookings`)
+  console.log(req)
+  axios.get(`http://localhost:3002/api/rooms/${id}/reviews`)
     .then(response => {res.send(response.data)})
     .catch(error => {res.send(error)});
 });
 
-app.get('/api/reviews/:id', (req, res) => {
+app.get('/api/rooms/:id/booking', (req, res) => {
   const { id } = req.params;
-  axios.get(`http://localhost:3002/api/listing/reviews/${id}`)
+  axios.get(`http://localhost:3001/api/rooms/${id}/booking`)
     .then(response => {res.send(response.data)})
     .catch(error => {res.send(error)});
 });
 
-app.get('/api/photos/:id', (req, res) => {
+app.get('/api/rooms/:id/booking/calendar', (req, res) => {
+  const { id } = req.params;
+  axios.get(`http://localhost:3001/api/rooms/${id}/booking/calendar`)
+    .then(response => {res.send(response.data)})
+    .catch(error => {
+      console.log(error)
+      res.send(error)});
+});
+
+app.get('/api/home/:id/photos', (req, res) => {
   const { id } = req.params;
   axios.get(`http://localhost:3003/api/home/${id}/photos`)
     .then(response => {res.send(response.data)})
