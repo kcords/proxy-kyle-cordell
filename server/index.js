@@ -1,11 +1,13 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
+const compression = require('compression');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const PUBLIC_DIR = path.resolve(__dirname, '..', 'public');
 
+app.use(compression());
 app.use(express.json());
 
 app.use('/', (req, res, next) => {
