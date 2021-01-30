@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  proxy:
+    build: .
+    image: kcords/fecproxy
+    ports:
+      - 80:3000
+
